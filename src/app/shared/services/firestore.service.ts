@@ -10,7 +10,7 @@ import {
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-
+import * as firebase from 'firebase/app';
 
 type CollectionPredicate<T> = string | AngularFirestoreCollection<T>;
 type DocPredicate<T> = string | AngularFirestoreDocument<T>;
@@ -55,5 +55,19 @@ export class FirestoreService {
           return docs.map((a: DocumentChangeAction<T>) => a.payload.doc.data()) as T[];
         }),
       );
+  }
+
+  /// Firebase Server Timestamp
+  get timestamp() {
+    return firebase.firestore.FieldValue.serverTimestamp();
+  }
+
+  set<T>(ref: DocPredicate<T>, data: any): Promise<void> {
+    const timestamp = this.timestamp;
+    return this.doc(ref).set({
+      ...data,
+      updatedAt: timestamp,
+      createdAt: timestamp,
+    });
   }
 }

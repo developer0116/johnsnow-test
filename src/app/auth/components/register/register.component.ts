@@ -27,6 +27,7 @@ export class RegisterComponent implements OnInit {
       fullName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
+      role: [false],
       confirmPassword: ['', Validators.required]
     }, {
       validator: MustMatch('password', 'confirmPassword')
@@ -46,10 +47,15 @@ export class RegisterComponent implements OnInit {
 
     this.loading = true;
     this.authService.signUp(this.form.email.value, this.form.password.value)
-    .then(() => {
-      this.authService.updateCurrentUser({fullName: this.form.fullName.value});
+    .then((user) => {
+      const userData = {
+        fullName: this.form.fullName.value,
+        uid: user.user.uid,
+        role: this.form.role.value ? 'ADMIN' : 'USER'
+      };
+      this.authService.updateCurrentUser(userData);
       this.alertService.success('Registration successful', true);
-      this.router.navigate(['landing-page']);
+      this.router.navigate(['articles']);
     })
     .catch(error => {
       this.alertService.error(error);

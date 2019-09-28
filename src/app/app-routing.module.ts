@@ -13,13 +13,15 @@ const routes: Routes = [{
   loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
 },
 {
-  path: 'landing-page',
+  path: '',
   canActivate: [AuthGuard],
   loadChildren: () => import('./landing-page/landing-page.module').then(m => m.LandingPageModule)
 }];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    useHash: true
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

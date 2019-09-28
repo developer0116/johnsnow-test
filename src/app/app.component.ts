@@ -12,6 +12,9 @@ export class AppComponent {
   constructor(private afAuth: AngularFireAuth, private authService: AuthService) {
     this.afAuth.authState.subscribe(user => {
       this.currentUser = user;
+      if (user) {
+        this.authService.getRole(user.uid);
+      }
     });
   }
 

@@ -1,16 +1,9 @@
 <!-- nav -->
-<nav class="navbar navbar-expand navbar-primary bg-primary" *ngIf="currentUser">
+<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
   <div class="navbar-nav w-100 d-flex justify-content-between">
-    <a class="nav-item nav-link text-white btn" routerLink="/">{{currentUser.displayName}}</a>
+    <a class="nav-item nav-link text-white" routerLink="/">{{currentUser.displayName}}</a>
     <a class="nav-item nav-link text-white btn" (click)="logout()">Logout</a>
   </div>
 </nav>
 
-<!-- main app container -->
-<div class="container">
-  <div class="row">
-    <div class="col-sm-6 offset-sm-3">
-      <router-outlet></router-outlet>
-    </div>
-  </div>
-</div>
+<router-outlet></router-outlet>

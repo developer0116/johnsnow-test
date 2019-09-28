@@ -1,0 +1,115 @@
+@import '../../../../styles/color.scss';
+
+.article-card-list {
+  width: 100%;
+  &__article-card {
+    overflow: hidden;
+    position: relative;
+    background-size: contain;
+    background-position: -40% 80%;
+    background-repeat: no-repeat;
+    width: 75%;
+    max-width: 800px;
+    height: 300px;
+    display: block;
+    margin: 8vh auto;
+    color: $color-white;
+    border-radius: 8px;
+    cursor: pointer;
+    -webkit-box-shadow: 0px 8px 12px 0px $color-transparent-grey;
+            box-shadow: 0px 8px 12px 0px $color-transparent-grey;
+    &__image {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+    &__color-overlay {
+      width: 100%;
+      height: 100%;
+      border-radius: 8px;
+      background: -webkit-gradient(linear, left top, right top, from($color-blue-shadow), color-stop(60%, $color-grey-dark), to($color-grey-dark));
+      background: linear-gradient(to right, $color-blue-shadow 0%, $color-grey-dark 60%, $color-grey-dark 100%);
+      background-blend-mode: multiply;
+      &__article-action {
+        padding: 1em;
+        display: inline-block;
+        button {
+          width: max-content;
+          min-width: 80px;
+          &:not(:last-child) {
+            margin-right: 16px;
+          }
+        }
+        &__delete-icon, &__edit-icon {
+          width: 80px;
+          font-size: 1.2em;
+          color: $color-white;
+        }
+      }
+      &__article-content {
+        width: 40%;
+        display: block;
+        position: relative;
+        float: right;
+        padding-right: 1em;
+        &__article-header {
+          margin-bottom: 2em;
+          &__article-title {
+            margin-bottom: .25em;
+            margin-top: .25em;
+            opacity: .75;
+            font-family: "Montserrat", helvetica, arial, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            line-height: 1;
+            font-weight: 400;
+          }
+          &__article-info {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: .8em;
+            line-height: 1;
+            margin: 0;
+            font-weight: 700;
+            opacity: .5;
+          }
+          &__article-author {
+            margin-top: .25em;
+            letter-spacing: 2px;
+          }
+        }
+        &__article-desc {
+          font-weight: 300;
+          opacity: .84;
+          margin-bottom: 2em;
+        }
+      }
+    }
+  }
+}
+.spinner {
+  width: 5rem;
+  height: 5rem;
+  margin-top: 2rem;
+}
+
+@media (max-width: 1000px) {
+  .article-card-list {
+    &__article-card {
+      background-position: 50% 0%;
+      background-size: cover;
+      height: 400px;
+      &__color-overlay {
+        background: -webkit-gradient(linear, left top, left bottom, from($color-blue-shadow), color-stop(60%, $color-grey-dark), to($color-grey-dark));
+        background: linear-gradient(to bottom, $color-blue-shadow 0%, $color-grey-dark 60%, $color-grey-dark 100%);
+        &__article-content {
+          margin-top: 4.2em;
+          width: 90%;
+        }
+      }
+    }
+  }
+}

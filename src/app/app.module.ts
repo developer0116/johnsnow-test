@@ -10,6 +10,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { FormsModule } from '@angular/forms';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { CoreModule } from './core/core.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const config = {
   apiKey: 'AIzaSyABTDZ8v44sxQjgAXI2hCGDp0sC9aMfoRs',
@@ -28,6 +29,7 @@ const config = {
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     SharedModule,
     AngularFireModule.initializeApp(config),
