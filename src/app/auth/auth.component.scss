@@ -1,0 +1,12 @@
+@import '../../styles/color.scss';
+
+.auth-container {
+  margin: 25% auto;
+  &__cursor {
+    cursor: pointer;
+  }
+}
+.btn:hover {
+  color: $color-primary;
+  background: $color-white;
+}

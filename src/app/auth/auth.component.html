@@ -1,0 +1,12 @@
+<div class="auth-container">
+  <div class="btn-group btn-group-toggle radio-container w-100 my-sm-4">
+    <label class="btn btn-outline-primary btn-rounded fz-12 w-50 auth-container__cursor" (click)="navigateToLogin()" [ngClass]="{'active': isLoginActive}">
+      Login
+    </label>
+    <label class="btn btn-outline-primary btn-rounded fz-12 w-50 auth-container__cursor" (click)="navigateToRegister()" [ngClass]="{'active': !isLoginActive}">
+      Sign up
+    </label>
+  </div>
+  <app-alert></app-alert>
+  <router-outlet></router-outlet>
+</div>
